@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="app"></div>
+    <script>
+      function render() {
+        const app = document.getElementById("app");
+        const route = location.hash.replace("#", "") || "home";
+        app.replaceChildren();
+        const link = document.createElement("a");
+        if (route === "detail") {
+          link.id = "back";
+          link.href = "#home";
+          link.textContent = "back";
+        } else {
+          link.id = "next";
+          link.href = "#detail";
+          link.textContent = "next";
+        }
+        app.appendChild(link);
+      }
+      window.addEventListener("hashchange", render);
+      render();
+    </script>
+  </body>
+</html>
